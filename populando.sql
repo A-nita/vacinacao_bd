@@ -53,6 +53,24 @@ INSERT INTO bairro(nome, cidade_id) VALUES
 ('Jd. Sumaré', 3), ('Jd. João Rossi', 3), ('Vila Virginia', 3),
 ('Campos Elísios', 3), ('Ipiranga', 3);
 
+--grupo prioritário
+SELECT * FROM grupo_prioritario;
+
+INSERT INTO grupo_prioritario (categoria, descricao)
+VALUES ('IDOSO', 'Idoso é todo indivíduo com 60 anos ou mais.');
+
+INSERT INTO grupo_prioritario (categoria, descricao)
+VALUES ('OBESO', ' Distúrbio que envolve excesso de gordura corporal, aumentando o risco de problemas de saúde.');
+
+INSERT INTO grupo_prioritario (categoria, descricao)
+VALUES ('DIABÉTICO', 'Pessoas com doenças que resultam em alto nível de glicose no sangue.');
+
+INSERT INTO grupo_prioritario (categoria, descricao)
+VALUES ('PROFISSIONAL DA SAÚDE', 'Pessoa que trabalha em uma profissão relacionada às ciências da saúde.');
+
+INSERT INTO grupo_prioritario (categoria, descricao)
+VALUES ('PROFISSIONAL DA EDUCAÇÃO', 'Todos os profissionais que atuam em escolas e instituições de ensino são considerados profissionais da Educação');
+
 
 
 
