@@ -1,10 +1,14 @@
 SELECT * FROM estado;
 SELECT * FROM cidade;
+SELECT * FROM bairro;
 
-SELECT cidade.nome, estado.nome 
+SELECT * 
 FROM cidade INNER JOIN estado ON cidade.estado_id = estado.id;
 
-DROP TABLE estado;
+SELECT * 
+FROM cidade INNER JOIN bairro ON cidade.id = bairro.cidade_id;
+
+DROP TABLE estado
 INSERT INTO estado (nome) 
 VALUES ('São Paulo'),('Minas Gerais');
 
@@ -31,6 +35,23 @@ INSERT INTO cidade(nome, estado_id) VALUES
 ('Rio de Janeiro', 19), ('Angra dos Reis', 19), ('Parati', 19),
 ('Volta Redonda', 19), ('Niterói', 19), ('Petrópolis', 19),
 ('Manaus', 3);
+
+INSERT INTO bairro(nome, cidade_id) VALUES
+('Jd. São Carlos', 2), ('Campolim', 2), ('Jd. Zulmira', 2),
+('Vila Jardini', 2), ('Jd. Vera Cruz', 2), ('Jd. América', 2),
+('Jd. dos Estados', 2);
+
+--Sorocaba
+INSERT INTO bairro(nome, cidade_id) VALUES
+('Jd. São Carlos', 2), ('Campolim', 2), ('Jd. Zulmira', 2),
+('Vila Jardini', 2), ('Jd. Vera Cruz', 2), ('Jd. América', 2),
+('Jd. dos Estados', 2);
+
+--Ribeirão Preto
+INSERT INTO bairro(nome, cidade_id) VALUES
+('Jd. Canada', 3), ('Jd. Mirajá', 3), ('Jd. Botânico', 3),
+('Jd. Sumaré', 3), ('Jd. João Rossi', 3), ('Vila Virginia', 3),
+('Campos Elísios', 3), ('Ipiranga', 3);
 
 
 
