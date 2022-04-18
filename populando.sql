@@ -4,7 +4,7 @@ SELECT * FROM cidade;
 SELECT cidade.nome, estado.nome 
 FROM cidade INNER JOIN estado ON cidade.estado_id = estado.id;
 
-DROP TABLE estado
+DROP TABLE estado;
 INSERT INTO estado (nome) 
 VALUES ('São Paulo'),('Minas Gerais');
 
