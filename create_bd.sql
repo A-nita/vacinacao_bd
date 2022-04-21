@@ -4,7 +4,7 @@ DROP TABLE vacina, local_vacinacao,
 		  
 CREATE TABLE lote(
 	n_lote SERIAL PRIMARY KEY,
-	total_doses INTEGER NOT NULL,
+	total_doses INTEGER NOT NULL CHECK(total_doses >= 1),
 	marca VARCHAR(255) NOT NULL,
 	data_fabricacao DATE NOT NULL,
 	data_validade DATE NOT NULL
@@ -36,15 +36,16 @@ CREATE TABLE bairro (
 );
 
 CREATE TABLE cidadao(
-	--trigger? sim : nao
-	cpf CHAR(11) PRIMARY KEY,
-	nome VARCHAR(127) NOT NULL,
-	telefone VARCHAR(11) NOT NULL,
-	sexo CHAR(1) NOT NULL CHECK(sexo IN ('F', 'M')),
-	bairro_id INTEGER NOT NULL,
-	rua VARCHAR(127) NOT NULL,
-	numero VARCHAR(15) NOT NULL,
-	FOREIGN KEY(bairro_id) REFERENCES bairro(id)
+    --trigger? sim : nao
+    cpf CHAR(11) PRIMARY KEY,
+    nome VARCHAR(127) NOT NULL,
+    telefone VARCHAR(11) NOT NULL,
+    data_nascimento DATE NOT NULL CHECK (EXTRACT (YEAR FROM AGE(DATE(data_nascimento))) > 5),
+    sexo CHAR(1) NOT NULL CHECK(sexo IN ('F', 'M')),
+    bairro_id INTEGER NOT NULL,
+    rua VARCHAR(127) NOT NULL,
+    numero VARCHAR(15) NOT NULL,
+    FOREIGN KEY(bairro_id) REFERENCES bairro(id)
 );
 
 CREATE TABLE local_vacinacao(
