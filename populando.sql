@@ -67,7 +67,7 @@ VALUES ('PROFISSIONAL DA SAÚDE', 'Pessoa que trabalha em uma profissão relacio
 INSERT INTO grupo_prioritario (categoria, descricao)
 VALUES ('PROFISSIONAL DA EDUCAÇÃO', 'Todos os profissionais que atuam em escolas e instituições de ensino são considerados profissionais da Educação');
 
-SELECT * FROM bairro ORDER BY cidade_id;
+SELECT * FROM bairro ;
 --LOCAL VACINACAO
 --Sorocaba
 SELECT * FROM local_vacinacao;
@@ -107,6 +107,29 @@ VALUES
 ( 50000, 'Pfizer', '2022-02-17', '2024-01-17'),
 ( 50000, 'Pfizer', '2022-04-11', '2024-04-11'),
 ( 50000, 'Pfizer', '2022-04-27', '2024-04-27')
+;
+
+--CIDADO
+SELECT * FROM cidadao;
+INSERT INTO cidadao (cpf,nome, data_nascimento, telefone,sexo,bairro_id,rua,numero)
+VALUES
+('11012495019', 'Juliette Freire Feitosa', '1989-12-03', '2231768190', 'F', 12, 'Rua Sabará', 173),
+('55609888042', 'Felipe Neto', '1988-06-21', '7928161442','M', 5, 'Rua Turim', 243),
+('05357086028', 'Zeca Pagodinho', '1959-02-04', '1226243301','M', 18, 'Rua Barão de Itaipava', 277),
+('26782143038', 'Fabio Junior', '1953-11-21', '1736813411', 'M', 7, 'Rua Parma', 124),
+('63607170002', 'Manuela Ávila', '1981-08-18', '1723505625', 'F', 15, 'Avenida Bertioga', 1455),
+ 
+('87265772598', 'Chou Jisu', '2000-06-21','1224294716', 'F', 2, 'Rua Professor Magalhães de Noronha', 23),
+('75837777474', 'Lee Chaeryong', '2001-06-05','1426908223','F', 1, 'Rua João Wagner Way', 123),
+('39771129295', 'Hwang Yeji', '2000-05-26','1223791301', 'F', 6, 'Av. Caribe', 421),
+('65352234851', 'Shin Ryujin', '2001-04-17','1227188988', 'F', 2, 'Av. Giseli Contantino', 2),
+('25146340919', 'Shin Yuna', '2003-12-09','1525054834', 'F', 4, 'Avenida Tuaici', 2754),
+ 
+('18556602371', 'Gregório Fornetti Azevedo', '2001-06-09', '16999120345', 'M', 8, 'R. Primo Zambianchi', '85'),
+('65777840604', 'Roberto Carlos', '1974-03-13', '16991234567', 'M', 10, 'R. Waldomiro Corrêa da Silva', '6'),
+('62833741154', 'Carlos Roberto', '1995-12-10', '11124573456', 'M', 12, 'Av. Ligia Latufe Salomão', '605'),
+('47678303114', 'Chris Martin', '1977-02-02', '1610534543', 'M', 13, 'R. Julio de Mesquita', '282'),
+('97222055606', 'Alan Turing', '1950-03-03', '1123563454', 'M', 15, 'R. Avanhandava', '1113')
 ;
 
 
