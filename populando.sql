@@ -8,10 +8,9 @@ FROM cidade INNER JOIN estado ON cidade.estado_id = estado.id;
 SELECT * 
 FROM cidade INNER JOIN bairro ON cidade.id = bairro.cidade_id;
 
-DROP TABLE estado
-INSERT INTO estado (nome) 
-VALUES ('São Paulo'),('Minas Gerais');
+DROP TABLE estado;
 
+--ESTADO
 INSERT INTO estado (nome) 
 VALUES
 ('Acre'),('Alagoas'),('Amazonas'),
@@ -25,7 +24,7 @@ VALUES
 ('Rio Grande do Sul'),('Santa Catarina'),
 ('Sergipe'),('São Paulo'),('Tocantins');
 
-
+--CIDADE
 INSERT INTO cidade(nome, estado_id) VALUES
 ('São Paulo', 26), ('Sorocaba', 26), ('Ribeirão Preto', 26),
 ('Votorantim', 26), ('Bauru', 26), ('Barueri', 26),
@@ -36,11 +35,7 @@ INSERT INTO cidade(nome, estado_id) VALUES
 ('Volta Redonda', 19), ('Niterói', 19), ('Petrópolis', 19),
 ('Manaus', 3);
 
-INSERT INTO bairro(nome, cidade_id) VALUES
-('Jd. São Carlos', 2), ('Campolim', 2), ('Jd. Zulmira', 2),
-('Vila Jardini', 2), ('Jd. Vera Cruz', 2), ('Jd. América', 2),
-('Jd. dos Estados', 2);
-
+--BAIRRO
 --Sorocaba
 INSERT INTO bairro(nome, cidade_id) VALUES
 ('Jd. São Carlos', 2), ('Campolim', 2), ('Jd. Zulmira', 2),
@@ -53,8 +48,7 @@ INSERT INTO bairro(nome, cidade_id) VALUES
 ('Jd. Sumaré', 3), ('Jd. João Rossi', 3), ('Vila Virginia', 3),
 ('Campos Elísios', 3), ('Ipiranga', 3);
 
---grupo prioritário
-SELECT * FROM grupo_prioritario;
+--GRUPO PRIORITARIO
 
 INSERT INTO grupo_prioritario (categoria, descricao)
 VALUES ('IDOSO', 'Idoso é todo indivíduo com 60 anos ou mais.');
@@ -72,7 +66,7 @@ INSERT INTO grupo_prioritario (categoria, descricao)
 VALUES ('PROFISSIONAL DA EDUCAÇÃO', 'Todos os profissionais que atuam em escolas e instituições de ensino são considerados profissionais da Educação');
 
 
-
+--LOCAL VACINACAO
 
 
 
