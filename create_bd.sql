@@ -86,6 +86,27 @@ CREATE TABLE vacina(
     FOREIGN KEY(cnes)          REFERENCES local_vacinacao (cnes)
 );
 
+CREATE OR REPLACE FUNCTION adiciona_idoso() RETURNS trigger AS $$
+    DECLARE
+        idade_pessoa integer;
+BEGIN
+SELECT EXTRACT(YEAR FROM AGE(NEW.data_nascimento)) INTO idade_pessoa;
+
+IF TG_OP = 'UPDATE' THEN
+DELETE FROM grupo_prioritario_cidadao WHERE cpf = OLD.CPF AND categoria = 'IDOSO';
+END IF;
+
+IF idade_pessoa >= 60 THEN
+INSERT INTO grupo_prioritario_cidadao(categoria, cpf)
+VALUES ('IDOSO', NEW.CPF);
+END IF;
+
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER adicionar_idoso AFTER UPDATE OR INSERT
+    ON cidadao FOR EACH ROW EXECUTE PROCEDURE adiciona_idoso();
 
 
 
