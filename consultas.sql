@@ -4,7 +4,7 @@ SELECT COUNT(DISTINCT cidadao.cpf)
 FROM cidadao JOIN vacina 
 ON cidadao.cpf = vacina.cpf_vacinado;
 
--- 2
+-- 2 Pessoas que foram vacinadas em determinado bairro
 SELECT DISTINCT cidadao.* FROM cidadao
 INNER JOIN vacina ON cidadao.CPF = vacina.CPF_vacinado
 WHERE cidadao.bairro_id IN (SELECT id FROM bairro WHERE nome = 'Centro');
@@ -17,16 +17,7 @@ SELECT lote.total_doses - (
 	WHERE lote.n_lote = 1
 ) FROM lote WHERE lote.n_lote = 1
 
-
-
-SELECT * FROM lote
-
 -- 4 Número de pessoas vacinadas de um grupo prioritário
---SELECT grupo_prioritario.categoria, COUNT(grupo_prioritario_cidadao.categoria)
---FROM grupo_prioritario LEFT JOIN grupo_prioritario_cidadao
---ON grupo_prioritario.categoria = grupo_prioritario_cidadao.categoria
---GROUP BY 1
---ORDER BY COUNT(grupo_prioritario_cidadao.categoria);
 
 SELECT grupo_prioritario.categoria, COUNT(grupo_prioritario_cidadao.categoria)
 FROM grupo_prioritario LEFT JOIN grupo_prioritario_cidadao
@@ -34,7 +25,7 @@ ON grupo_prioritario.categoria = grupo_prioritario_cidadao.categoria
 WHERE grupo_prioritario_cidadao.categoria = 'IDOSO'
 GROUP BY 1;
 
---5
+--5 Listar lotes com data vencimento mais próxima
 SELECT * FROM lote
 WHERE data_validade = (SELECT MIN(data_validade) FROM lote);
 
@@ -55,18 +46,45 @@ SELECT c.nome, c.cpf FROM vacina v
 join cidadao c on v.cpf_vacinado = c.cpf
 where v.n_lote = 1;
 
---9
+--9 Verificar se dado cidadão já foi vacinado
+SELECT DISTINCT cidadao.* FROM
+cidadao JOIN vacina
+ON cidadao.cpf = vacina.cpf_vacinado
+WHERE cidadao.cpf = '18556602371';
 
---10
 
---11
+-- 10 Listar os lotes que não possuem mais vacinas
+SELECT * FROM (
+    SELECT *, total_doses - (
+        SELECT COUNT(lote.n_lote) FROM lote
+        INNER JOIN vacina ON vacina.n_lote = lote.n_lote
+        WHERE lote.n_lote = l.n_lote
+    ) AS qtd_doses_restantes
+    FROM lote l
+) AS subquery
+WHERE qtd_doses_restantes = 0;
+
+--11 Consultar tempo de validade do lote
+SELECT data_validade FROM lote
+WHERE n_lote = 2;
+
+--12 Verificar todas as aplicações de vacinas que ocorreram em um determinado local de vacinação
+SELECT * FROM vacina 
+WHERE cnes = '2055139';
+
+--13 Mostrar quantas doses um certo cidadão recebeu
+SELECT COUNT(*) FROM cidadao c 
+LEFT JOIN vacina v 
+on c.cpf = v.cpf_vacinado
+WHERE c.cpf = '55609888042'
+GROUP BY c.cpf;
 
 
---33 Número de vacina que cada cidadão tomou:
+--14 -Número de vacina que cada cidadão tomou:
 SELECT cidadao.nome, COUNT(vacina.cpf_vacinado)
 FROM cidadao LEFT JOIN vacina 
 ON cidadao.cpf = vacina.cpf_vacinado
 GROUP BY 1
-ORDER BY cidadao.nome;
+ORDER BY COUNT(vacina.cpf_vacinado) DESC;
  
 
