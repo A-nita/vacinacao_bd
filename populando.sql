@@ -42,7 +42,6 @@ INSERT INTO bairro(nome, cidade_id) VALUES
 ('Vila Jardini', 2), ('Jd. Vera Cruz', 2), ('Jd. América', 2),
 ('Jd. dos Estados', 2), ('Cerrado', 2), ('Aparecidinha', 2),
 ('Brigadeiro Tobias', 2), ('Centro', 2);
-INSERT INTO bairro(nome, cidade_id) VALUES ('Centro', 2);
 
 --Ribeirão Preto
 INSERT INTO bairro(nome, cidade_id) VALUES
