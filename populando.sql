@@ -67,11 +67,11 @@ VALUES ('PROFISSIONAL DA SAÚDE', 'Pessoa que trabalha em uma profissão relacio
 INSERT INTO grupo_prioritario (categoria, descricao)
 VALUES ('PROFISSIONAL DA EDUCAÇÃO', 'Todos os profissionais que atuam em escolas e instituições de ensino são considerados profissionais da Educação');
 
-SELECT * FROM bairro ;
+--SELECT * FROM bairro ;
 --LOCAL VACINACAO
 --Sorocaba
-SELECT * FROM local_vacinacao;
-DELETE FROM local_vacinacao;--WHERE cnes = '';
+--SELECT * FROM local_vacinacao;
+--DELETE FROM local_vacinacao;--WHERE cnes = '';
 INSERT INTO local_vacinacao VALUES 
 ('2055139', 'UBS Cerrado', 2, 'RUA VISCONDE DO RIO BRANCO', 4), 
 ('2059533', 'UNIDADE DE SAUDE DA FAMILIA APARECIDINHA SOROCABA', 17, 'RUA JOAQUIM MACHADO', 620),
@@ -110,7 +110,7 @@ VALUES
 ;
 
 --CIDADO
-SELECT * FROM cidadao;
+--SELECT * FROM cidadao;
 INSERT INTO cidadao (cpf,nome, data_nascimento, telefone,sexo,bairro_id,rua,numero)
 VALUES
 ('11012495019', 'Juliette Freire Feitosa', '1989-12-03', '2231768190', 'F', 12, 'Rua Sabará', 173),
@@ -131,8 +131,44 @@ VALUES
 ('47678303114', 'Chris Martin', '1977-02-02', '1610534543', 'M', 13, 'R. Julio de Mesquita', '282'),
 ('97222055606', 'Alan Turing', '1950-03-03', '1123563454', 'M', 15, 'R. Avanhandava', '1113')
 ;
+--SELECT * FROM grupo_prioritario_cidadao;
+--SELECT * FROM profissional_da_saude;
+INSERT INTO profissional_da_saude VALUES
+('75837777474', '181713'),
+('18556602371', '169773');
 
+--DELETE FROM grupo_prioritario_cidadao
+INSERT INTO grupo_prioritario_cidadao(categoria, cpf) VALUES
+('OBESO', '65777840604'),
+('DIABÉTICO', '65777840604'),
+('PROFISSIONAL DA EDUCAÇÃO', '65777840604'),
+('PROFISSIONAL DA SAÚDE', '18556602371'),
+('PROFISSIONAL DA SAÚDE', '75837777474'),
+('IDOSO', '05357086028'),
+('DIABÉTICO', '26782143038')
+;
+SELECT * FROM local_vacinacao
 
+INSERT INTO vacina (n_lote, cpf_vacinado, cpf_aplicante, cnes, data_aplicacao)
+VALUES
+(1, '18556602371', '75837777474', '3307905', '2021-08-10'),
+(3, '18556602371', '75837777474', '2043203', '2021-09-03'),
+(12, '18556602371', '75837777474', '2044285', '2021-01-11'),
+(2, '47678303114', '18556602371', '2717107', '2021-01-11'),
+(8, '47678303114', '75837777474', '2717107', '2021-05-10'),
+(6, '65777840604', '18556602371', '2044285', '2021-04-12'),
 
+(1, '11012495019', '75837777474', '2055139', '2021-08-23'),
+(2, '11012495019', '75837777474', '2055139', '2021-12-27'),
+(3, '11012495019', '75837777474', '2055139', '2022-01-30'),
+(1, '25146340919', '75837777474', '6402968', '2021-08-13'),
+(4, '65352234851', '75837777474', '6402968', '2021-07-30'),
+(3, '39771129295', '75837777474', '2059533', '2021-09-04'),
+(1, '39771129295', '75837777474', '2059533', '2021-12-07'),
 
-
+(4, '05357086028', '75837777474', '3307905', '2022-03-23'),
+(11, '63607170002', '18556602371', '2717107', '2022-03-11'),
+(12, '63607170002', '18556602371', '2717107', '2022-06-23'),
+(13, '63607170002', '18556602371', '2717107', '2022-09-23'),
+(7, '55609888042', '18556602371', '2086964', '2021-12-25'),
+(8, '55609888042', '18556602371', '2086964', '2022-03-15');
