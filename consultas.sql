@@ -1,8 +1,10 @@
 --1 Número de pessoas vacinadas de determinada faixa etária:
-SELECT * FROM bairro
+
 SELECT COUNT(DISTINCT cidadao.cpf)
 FROM cidadao JOIN vacina 
-ON cidadao.cpf = vacina.cpf_vacinado;
+ON cidadao.cpf = vacina.cpf_vacinado
+WHERE 
+EXTRACT(YEAR FROM AGE(cidadao.data_nascimento)) BETWEEN 17 AND 23;
 
 -- 2 Pessoas que foram vacinadas em determinado bairro
 SELECT DISTINCT cidadao.* FROM cidadao
@@ -65,7 +67,8 @@ SELECT * FROM (
 WHERE qtd_doses_restantes = 0;
 
 --11 Consultar tempo de validade do lote
-SELECT data_validade FROM lote
+SELECT (data_validade - CURRENT_DATE) AS tempo_de_validade_em_dias
+FROM lote
 WHERE n_lote = 2;
 
 --12 Verificar todas as aplicações de vacinas que ocorreram em um determinado local de vacinação
@@ -86,5 +89,3 @@ FROM cidadao LEFT JOIN vacina
 ON cidadao.cpf = vacina.cpf_vacinado
 GROUP BY 1
 ORDER BY COUNT(vacina.cpf_vacinado) DESC;
- 
-
