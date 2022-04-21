@@ -73,17 +73,17 @@ CREATE TABLE grupo_prioritario_cidadao(
 );
 
 CREATE TABLE vacina(
-	id SERIAL,
-	n_lote INTEGER,
-	cpf_vacinado CHAR(11) NOT NULL,
-	cpf_aplicante CHAR(11) NOT NULL,
-	cnes VARCHAR(7) NOT NULL,
-	data_aplicacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	PRIMARY KEY (id, n_lote),
-	FOREIGN KEY(n_lote)        REFERENCES lote (n_lote),
-	FOREIGN KEY(cpf_vacinado)  REFERENCES cidadao (cpf),
-	FOREIGN KEY(cpf_aplicante) REFERENCES profissional_da_saude (cpf),
-	FOREIGN KEY(cnes)          REFERENCES local_vacinacao (cnes)	
+    id SERIAL,
+    n_lote INTEGER,
+    cpf_vacinado CHAR(11) NOT NULL,
+    cpf_aplicante CHAR(11) CHECK (cpf_vacinado <> cpf_aplicante) NOT NULL,
+    cnes VARCHAR(7) NOT NULL,
+    data_aplicacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    PRIMARY KEY (id, n_lote),
+    FOREIGN KEY(n_lote)        REFERENCES lote (n_lote),
+    FOREIGN KEY(cpf_vacinado)  REFERENCES cidadao (cpf),
+    FOREIGN KEY(cpf_aplicante) REFERENCES profissional_da_saude (cpf),
+    FOREIGN KEY(cnes)          REFERENCES local_vacinacao (cnes)
 );
 
 
