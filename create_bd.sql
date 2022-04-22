@@ -51,7 +51,7 @@ CREATE TABLE cidadao(
 CREATE TABLE local_vacinacao(
 	cnes VARCHAR(7) PRIMARY KEY,
 	nome_unidade VARCHAR(127),
-	bairro_id INTEGER,
+	bairro_id INTEGER NOT NULL,
 	rua VARCHAR(127) NOT NULL,
 	numero VARCHAR(15) NOT NULL,
 	FOREIGN KEY(bairro_id) REFERENCES bairro(id)
