@@ -11,7 +11,7 @@ SELECT DISTINCT cidadao.* FROM cidadao
 INNER JOIN vacina ON cidadao.CPF = vacina.CPF_vacinado
 WHERE cidadao.bairro_id IN (SELECT id FROM bairro WHERE nome = 'Centro');
 
--- 3 Para um lote, consultar a quantidade de vacinas restantes(Bruno Correia Rocha)
+-- 3 Para um lote, consultar a quantidade de vacinas restantes
 SELECT lote.total_doses - (
 	SELECT COUNT(vacina.id)
 	FROM lote LEFT JOIN vacina
