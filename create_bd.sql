@@ -135,6 +135,5 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER limitar_lotes_vazios BEFORE UPDATE OR INSERT
     ON vacina FOR EACH ROW EXECUTE PROCEDURE limita_lotes_vazios();
 
-DROP TRIGGER limitar_lotes_vazios ON vacina 
 
 
