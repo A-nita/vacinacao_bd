@@ -20,12 +20,11 @@ SELECT lote.total_doses - (
 ) FROM lote WHERE lote.n_lote = 1
 
 -- 4 Número de pessoas vacinadas de um grupo prioritário
-
-SELECT grupo_prioritario.categoria, COUNT(grupo_prioritario_cidadao.categoria)
-FROM grupo_prioritario LEFT JOIN grupo_prioritario_cidadao
-ON grupo_prioritario.categoria = grupo_prioritario_cidadao.categoria
-WHERE grupo_prioritario_cidadao.categoria = 'IDOSO'
-GROUP BY 1;
+SELECT COUNT(DISTINCT cidadao.cpf)
+FROM grupo_prioritario_cidadao
+         INNER JOIN cidadao ON cidadao.cpf = grupo_prioritario_cidadao.cpf
+         INNER JOIN vacina ON cidadao.cpf = vacina.cpf_vacinado
+WHERE grupo_prioritario_cidadao.categoria = 'IDOSO';
 
 --5 Listar lotes com data vencimento mais próxima
 SELECT * FROM lote
@@ -37,11 +36,7 @@ FROM grupo_prioritario_cidadao
 WHERE cpf = '65777840604';
 
 --7 Quantidade de vacinas já aplicadas de um lote
-SELECT lote.n_lote ,COUNT(vacina.id)  FROM lote -- aq n sei se precisa projetar o n_lote
-LEFT JOIN vacina ON lote.n_lote = vacina.n_lote
-WHERE lote.n_lote = 5 --lote buscado
-GROUP BY lote.n_lote 
-ORDER BY lote.n_lote;
+SELECT COUNT(id) FROM vacina WHERE n_lote = 5;
 
 --8 Listar os pacientes que tomaram a vacina de determinado lote
 SELECT c.nome, c.cpf FROM vacina v
