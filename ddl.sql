@@ -74,7 +74,7 @@ CREATE TABLE grupo_prioritario_cidadao(
 
 CREATE TABLE vacina(
     id SERIAL,
-    n_lote INTEGER,
+    n_lote INTEGER NOT NULL,
     cpf_vacinado CHAR(11) NOT NULL,
     cpf_aplicante CHAR(11) CHECK (cpf_vacinado <> cpf_aplicante) NOT NULL,
     cnes VARCHAR(7) NOT NULL,
